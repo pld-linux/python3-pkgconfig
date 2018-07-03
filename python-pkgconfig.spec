@@ -8,7 +8,7 @@ Summary:	Python 2 interface to pkg-config
 Summary(pl.UTF-8):	Interfejs Pythona 2 do narzędzia pkg-config
 Name:		python-pkgconfig
 Version:	1.2.2
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/pkgconfig
