@@ -1,33 +1,37 @@
 #
 # Conditional build:
-%bcond_without	tests	# nose tests
+%bcond_with	tests	# unit tests (not included in pypi release)
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
 Summary:	Python 2 interface to pkg-config
 Summary(pl.UTF-8):	Interfejs Pythona 2 do narzędzia pkg-config
 Name:		python-pkgconfig
-Version:	1.2.2
-Release:	2
+Version:	1.5.1
+Release:	1
 License:	MIT
 Group:		Libraries/Python
-#Source0Download: https://pypi.python.org/simple/pkgconfig
+#Source0Download: https://pypi.org/simple/pkgconfig/
 Source0:	https://files.pythonhosted.org/packages/source/p/pkgconfig/pkgconfig-%{version}.tar.gz
-# Source0-md5:	81a8f6ef3371831d081e03db39e09683
-URL:		http://github.com/matze/pkgconfig
+# Source0-md5:	9f9cdb224ec0a1e59efcc7cac4b91972
+URL:		https://github.com/matze/pkgconfig
 %if %{with python2}
-BuildRequires:	python-modules >= 1:2.6
-BuildRequires:	python-nose >= 1.0
+BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	python-setuptools
+%if %{with tests}
+BuildRequires:	python-pytest >= 3.8.2
+%endif
 %endif
 %if %{with python3}
-BuildRequires:	python3-modules >= 1:3.2
-BuildRequires:	python3-nose >= 1.0
+BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	python3-setuptools
+%if %{with tests}
+BuildRequires:	python3-pytest >= 3.8.2
+%endif
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
-Requires:	python-modules >= 1:2.6
+Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +47,7 @@ pkg-config.
 Summary:	Python 3 interface to pkg-config
 Summary(pl.UTF-8):	Interfejs Pythona 3 do narzędzia pkg-config
 Group:		Libraries/Python
-Requires:	python3-modules >= 1:3.2
+Requires:	python3-modules >= 1:3.3
 
 %description -n python3-pkgconfig
 pkgconfig is a Python module to interface with the pkg-config command
@@ -60,13 +64,13 @@ pkg-config.
 %if %{with python2}
 %py_build
 
-%{?with_tests:%{__python} -m nose test.py}
+%{?with_tests:%{__python} -m pytest test_pkgconfig.py}
 %endif
 
 %if %{with python3}
 %py3_build
 
-%{?with_tests:%{__python3} -m nose test.py}
+%{?with_tests:%{__python3} -m pytest test_pkgconfig.py}
 %endif
 
 %install
