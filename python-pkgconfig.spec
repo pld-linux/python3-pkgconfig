@@ -7,13 +7,15 @@
 Summary:	Python 2 interface to pkg-config
 Summary(pl.UTF-8):	Interfejs Pythona 2 do narzędzia pkg-config
 Name:		python-pkgconfig
-Version:	1.5.1
-Release:	3
+# keep 1.5.2 here for python2 support
+# (oficial support dropped in 1.5.4, but 1.5.3 has syntax errors under python2)
+Version:	1.5.2
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pkgconfig/
 Source0:	https://files.pythonhosted.org/packages/source/p/pkgconfig/pkgconfig-%{version}.tar.gz
-# Source0-md5:	9f9cdb224ec0a1e59efcc7cac4b91972
+# Source0-md5:	0d889edf670b644bfeaa3bb9444169cb
 URL:		https://github.com/matze/pkgconfig
 %if %{with python2}
 BuildRequires:	python-modules >= 1:2.7
