@@ -10,7 +10,7 @@ Name:		python-pkgconfig
 # keep 1.5.2 here for python2 support
 # (oficial support dropped in 1.5.4, but 1.5.3 has syntax errors under python2)
 Version:	1.5.2
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pkgconfig/
