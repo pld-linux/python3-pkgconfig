@@ -6,7 +6,7 @@ Summary:	Python 3 interface to pkg-config
 Summary(pl.UTF-8):	Interfejs Pythona 3 do narzędzia pkg-config
 Name:		python3-pkgconfig
 Version:	1.5.5
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/pkgconfig/
